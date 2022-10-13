@@ -32,6 +32,6 @@ func (fc *FlagCommand) Init() {
 	fc.Command.Flags().StringVarP(&fc.config.Password, "password", "p", "", "config server's password")
 }
 
-func (fc *FlagCommand) GetConfig() *ConfigProviderData {
-	return fc.config
+func (fc *FlagCommand) GetFlags() ConfigProviderData {
+	return *fc.config
 }

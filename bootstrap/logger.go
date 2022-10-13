@@ -17,7 +17,7 @@ func NewLoggerProvide(cfg *confpb.Log, serviceInfo *ServiceInfo, debug ...bool) 
 		d = debug[0]
 	}
 
-	logger := log.NewStdLogger(os.Stdout)
+	var logger log.Logger
 
 	if cfg != nil {
 		if cfg.GetZap() != nil {
@@ -28,7 +28,11 @@ func NewLoggerProvide(cfg *confpb.Log, serviceInfo *ServiceInfo, debug ...bool) 
 			logger = aliyunx.NewAliyunLoggerWithConfig(cfg.GetAliyun())
 		} else if cfg.GetFluent() != nil {
 			logger = fluentx.NewFluentLoggerWithConfig(cfg.GetFluent())
+		} else {
+			logger = log.NewStdLogger(os.Stdout)
 		}
+	} else {
+		logger = log.NewStdLogger(os.Stdout)
 	}
 
 	return log.With(

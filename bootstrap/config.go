@@ -157,8 +157,13 @@ func NewFileConfigSource(filePath string) config.Source {
 
 // NewConfigProvider 创建一个配置
 func NewConfigProvider(cfg ConfigProviderData) config.Config {
+	envSourcePrefix := "KRATOS_"
+	getPrefix := os.Getenv("ENV_SOURCE_PREFIX")
+	if getPrefix != "" {
+		envSourcePrefix = getPrefix
+	}
 	options := []config.Source{
-		env.NewSource(os.Getenv("ENV_SOURCE_PREFIX")),
+		env.NewSource(envSourcePrefix),
 		NewFileConfigSource(cfg.ConfigPath),
 	}
 

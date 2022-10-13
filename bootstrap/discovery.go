@@ -17,6 +17,7 @@ import (
 	polarisConfig "github.com/polarismesh/polaris-go/pkg/config"
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"log"
+	"net/http"
 	"net/url"
 	"strconv"
 	"strings"
@@ -46,13 +47,17 @@ func NewEtcdDiscovery(cfg *confpb.EtcdConfig) registry.Discovery {
 		panic("etcd discovery config must be set.")
 	}
 	config := clientv3.Config{
-		Endpoints: cfg.Endpoints,
+		Endpoints:   cfg.Endpoints,
+		DialTimeout: time.Second * 20,
 	}
 	if cfg.Username != nil {
 		config.Username = *cfg.Username
 	}
 	if cfg.Password != nil {
 		config.Password = *cfg.Password
+	}
+	if cfg.GetTimeout() != nil {
+		config.DialTimeout = cfg.GetTimeout().AsDuration()
 	}
 
 	client, err := clientv3.New(config)
@@ -74,11 +79,20 @@ func NewConsulDiscovery(cfg *confpb.ConsulConfig) registry.Discovery {
 
 	clientConfig := &api.Config{
 		Address: cfg.GetEndpoints()[0],
+		HttpClient: &http.Client{
+			Timeout: time.Second * 20,
+		},
 	}
 	if cfg.Password != nil && cfg.Username != nil {
 		clientConfig.HttpAuth = &api.HttpBasicAuth{
 			Username: cfg.GetUsername(),
 			Password: cfg.GetPassword(),
+		}
+	}
+
+	if cfg.GetTimeout() != nil {
+		clientConfig.HttpClient = &http.Client{
+			Timeout: cfg.GetTimeout().AsDuration(),
 		}
 	}
 

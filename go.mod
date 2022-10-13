@@ -11,13 +11,14 @@ require (
 	github.com/go-kratos/kratos/contrib/config/nacos/v2 v2.0.0-20220826025402-b354f185c044
 	github.com/go-kratos/kratos/contrib/log/aliyun/v2 v2.0.0-20220826025402-b354f185c044
 	github.com/go-kratos/kratos/contrib/log/fluent/v2 v2.0.0-20220826025402-b354f185c044
+	github.com/go-kratos/kratos/contrib/metrics/prometheus/v2 v2.0.0-20221012112139-b5cd1c693d04
 	github.com/go-kratos/kratos/contrib/registry/consul/v2 v2.0.0-20220901152127-39536d32795f
 	github.com/go-kratos/kratos/contrib/registry/discovery/v2 v2.0.0-20220901152127-39536d32795f
 	github.com/go-kratos/kratos/contrib/registry/etcd/v2 v2.0.0-20220901152127-39536d32795f
 	github.com/go-kratos/kratos/contrib/registry/nacos/v2 v2.0.0-20220901152127-39536d32795f
 	github.com/go-kratos/kratos/contrib/registry/polaris/v2 v2.0.0-20220901152127-39536d32795f
 	github.com/go-kratos/kratos/contrib/registry/zookeeper/v2 v2.0.0-20220901152127-39536d32795f
-	github.com/go-kratos/kratos/v2 v2.5.0
+	github.com/go-kratos/kratos/v2 v2.5.1
 	github.com/go-zookeeper/zk v1.0.3
 	github.com/hashicorp/consul/api v1.14.0
 	github.com/hetiansu5/urlquery v1.2.7
@@ -25,6 +26,7 @@ require (
 	github.com/lestrrat-go/strftime v1.0.6
 	github.com/nacos-group/nacos-sdk-go v1.1.2
 	github.com/polarismesh/polaris-go v1.1.0
+	github.com/prometheus/client_golang v1.12.2
 	github.com/rifflock/lfshook v0.0.0-20180920164130-b9218ef580f5
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/cobra v1.5.0
@@ -59,7 +61,7 @@ require (
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-errors/errors v1.0.1 // indirect
 	github.com/go-kit/kit v0.10.0 // indirect
-	github.com/go-logfmt/logfmt v0.5.0 // indirect
+	github.com/go-logfmt/logfmt v0.5.1 // indirect
 	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-playground/form/v4 v4.2.0 // indirect
@@ -103,9 +105,8 @@ require (
 	github.com/pierrec/lz4 v2.6.0+incompatible // indirect
 	github.com/pierrec/lz4/v4 v4.1.15 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/prometheus/client_golang v1.12.1 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
-	github.com/prometheus/common v0.32.1 // indirect
+	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.7.3 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect

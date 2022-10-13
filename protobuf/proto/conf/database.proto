@@ -6,6 +6,12 @@ option go_package = "github.com/aesoper101/kratos-utils/protobuf/types/confpb;co
 
 import "google/protobuf/duration.proto";
 
+
+message Database {
+  string driver = 1;
+  string source = 2;
+}
+
 message Redis {
   string network = 1;
   string addr = 2 ;

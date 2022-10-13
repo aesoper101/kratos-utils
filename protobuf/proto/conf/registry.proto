@@ -28,12 +28,14 @@ message EtcdConfig{
   repeated string endpoints = 1;
   optional string username = 2;
   optional string password = 3;
+  optional google.protobuf.Duration  timeout = 10;
 }
 
 message ConsulConfig {
   repeated string endpoints = 1;
   optional string username = 2;
   optional string password = 3;
+  optional google.protobuf.Duration  timeout = 10;
 }
 
 message DiscoveryConfig {
@@ -48,6 +50,7 @@ message NacosConfig {
   repeated string endpoints = 1;
   optional string username = 2;
   optional string password = 3;
+  optional google.protobuf.Duration  timeout = 10;
 }
 
 message PolarisConfig {
