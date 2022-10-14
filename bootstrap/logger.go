@@ -1,10 +1,10 @@
 package bootstrap
 
 import (
-	"github.com/aesoper101/kratos-utils/log/aliyunx"
-	"github.com/aesoper101/kratos-utils/log/fluentx"
-	"github.com/aesoper101/kratos-utils/log/logrusx"
-	"github.com/aesoper101/kratos-utils/log/zapx"
+	"github.com/aesoper101/kratos-utils/internal/log/aliyunx"
+	"github.com/aesoper101/kratos-utils/internal/log/fluentx"
+	"github.com/aesoper101/kratos-utils/internal/log/logrusx"
+	"github.com/aesoper101/kratos-utils/internal/log/zapx"
 	"github.com/aesoper101/kratos-utils/protobuf/types/confpb"
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/middleware/tracing"

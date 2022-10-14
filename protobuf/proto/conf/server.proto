@@ -10,6 +10,9 @@ message HTTP {
   string network = 1;
   string addr = 2;
   google.protobuf.Duration timeout = 3;
+  PprofSettings pprof = 4;
+  MetricsSettings metrics = 5;
+  SwaggerSettings swagger = 6;
 }
 
 message GRPC {
@@ -18,3 +21,17 @@ message GRPC {
   google.protobuf.Duration timeout = 3;
 }
 
+message MetricsSettings {
+  bool enabled = 1;
+  string handle = 2;
+}
+
+message SwaggerSettings {
+  bool enabled = 1;
+  string handle = 2;
+}
+
+message PprofSettings {
+  bool enabled = 1;
+  string prefix = 2;
+}
