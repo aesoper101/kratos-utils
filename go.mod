@@ -6,6 +6,7 @@ require (
 	entgo.io/ent v0.11.2
 	github.com/Shopify/sarama v1.36.0
 	github.com/aesoper101/go-utils v0.0.0-20220803075833-0a6959df6214
+	github.com/go-kratos/kratos/v2 v2.5.1
 	github.com/go-kratos/kratos/contrib/config/consul/v2 v2.0.0-20220826025402-b354f185c044
 	github.com/go-kratos/kratos/contrib/config/etcd/v2 v2.0.0-20220826025402-b354f185c044
 	github.com/go-kratos/kratos/contrib/config/nacos/v2 v2.0.0-20220826025402-b354f185c044
