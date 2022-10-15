@@ -11,19 +11,14 @@ import (
 	"os"
 )
 
-func NewLoggerProvide(cfg *confpb.Log, serviceInfo *ServiceInfo, debug ...bool) log.Logger {
-	d := false
-	if len(debug) > 0 {
-		d = debug[0]
-	}
-
+func NewLoggerProvide(cfg *confpb.Log, serviceInfo *ServiceInfo) log.Logger {
 	var logger log.Logger
 
 	if cfg != nil {
 		if cfg.GetZap() != nil {
-			logger = zapx.NewZapLoggerWithConfig(cfg.GetZap(), d)
+			logger = zapx.NewZapLoggerWithConfig(cfg.GetZap(), cfg.GetDebug())
 		} else if cfg.GetLogrus() != nil {
-			logger = logrusx.NewLogrusLoggerWithConfig(cfg.GetLogrus(), d)
+			logger = logrusx.NewLogrusLoggerWithConfig(cfg.GetLogrus(), cfg.GetDebug())
 		} else if cfg.GetAliyun() != nil {
 			logger = aliyunx.NewAliyunLoggerWithConfig(cfg.GetAliyun())
 		} else if cfg.GetFluent() != nil {

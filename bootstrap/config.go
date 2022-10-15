@@ -22,7 +22,7 @@ import (
 	"time"
 )
 
-type ConfigProviderData struct {
+type Config struct {
 	ConfigPath  string
 	ConfigType  string
 	ConfigHost  []string
@@ -42,7 +42,7 @@ func getConfigKey(configKey string, useBackslash bool) string {
 }
 
 // NewRemoteConfigSource 创建一个远程配置源
-func NewRemoteConfigSource(cfg *ConfigProviderData) config.Source {
+func NewRemoteConfigSource(cfg *Config) config.Source {
 	switch cfg.ConfigType {
 	case ConfigNacos:
 		return NewNacosConfigSource(cfg)
@@ -55,7 +55,7 @@ func NewRemoteConfigSource(cfg *ConfigProviderData) config.Source {
 }
 
 // NewNacosConfigSource 创建一个远程配置源 - Nacos
-func NewNacosConfigSource(cfg *ConfigProviderData) config.Source {
+func NewNacosConfigSource(cfg *Config) config.Source {
 	var sc []nacosConstant.ServerConfig
 
 	for _, configHost := range cfg.ConfigHost {
@@ -97,7 +97,7 @@ func NewNacosConfigSource(cfg *ConfigProviderData) config.Source {
 }
 
 // NewEtcdConfigSource 创建一个远程配置源 - Etcd
-func NewEtcdConfigSource(cfg *ConfigProviderData) config.Source {
+func NewEtcdConfigSource(cfg *Config) config.Source {
 	if len(cfg.ConfigHost) == 0 {
 		panic("etcd hosts must be set.")
 	}
@@ -120,7 +120,7 @@ func NewEtcdConfigSource(cfg *ConfigProviderData) config.Source {
 }
 
 // NewConsulConfigSource 创建一个远程配置源 - Consul
-func NewConsulConfigSource(cfg *ConfigProviderData) config.Source {
+func NewConsulConfigSource(cfg *Config) config.Source {
 	if len(cfg.ConfigHost) == 0 {
 		panic("Consul hosts must be set.")
 	}
@@ -156,7 +156,7 @@ func NewFileConfigSource(filePath string) config.Source {
 }
 
 // NewConfigProvider 创建一个配置
-func NewConfigProvider(cfg ConfigProviderData) config.Config {
+func NewConfigProvider(cfg Config) config.Config {
 	envSourcePrefix := "KRATOS_"
 	getPrefix := os.Getenv("ENV_SOURCE_PREFIX")
 	if getPrefix != "" {

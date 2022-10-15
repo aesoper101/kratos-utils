@@ -6,7 +6,6 @@ require (
 	entgo.io/ent v0.11.2
 	github.com/Shopify/sarama v1.36.0
 	github.com/aesoper101/go-utils v0.0.0-20220803075833-0a6959df6214
-	github.com/go-kratos/kratos/v2 v2.5.1
 	github.com/go-kratos/kratos/contrib/config/consul/v2 v2.0.0-20220826025402-b354f185c044
 	github.com/go-kratos/kratos/contrib/config/etcd/v2 v2.0.0-20220826025402-b354f185c044
 	github.com/go-kratos/kratos/contrib/config/nacos/v2 v2.0.0-20220826025402-b354f185c044
@@ -34,7 +33,7 @@ require (
 	github.com/spf13/pflag v1.0.5
 	github.com/tracer0tong/kafkalogrus v0.0.0-20180816014403-290bb4d4d549
 	go.etcd.io/etcd/client/v3 v3.5.4
-	go.opentelemetry.io/otel v1.9.0
+	go.opentelemetry.io/otel v1.10.0
 	go.opentelemetry.io/otel/exporters/jaeger v1.9.0
 	go.opentelemetry.io/otel/sdk v1.9.0
 	go.uber.org/zap v1.23.0
@@ -53,6 +52,7 @@ require (
 	github.com/coreos/go-semver v0.3.0 // indirect
 	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/eapache/go-resiliency v1.3.0 // indirect
 	github.com/eapache/go-xerial-snappy v0.0.0-20180814174437-776d5712da21 // indirect
 	github.com/eapache/queue v1.1.0 // indirect
@@ -66,6 +66,12 @@ require (
 	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-playground/form/v4 v4.2.0 // indirect
+	github.com/go-redis/cache/v8 v8.4.3 // indirect
+	github.com/go-redis/redis/extra/rediscmd/v9 v9.0.0-rc.1 // indirect
+	github.com/go-redis/redis/extra/redisotel/v9 v9.0.0-rc.1 // indirect
+	github.com/go-redis/redis/v8 v8.11.4 // indirect
+	github.com/go-redis/redis/v9 v9.0.0-rc.1 // indirect
+	github.com/go-redis/redis_rate/v9 v9.1.2 // indirect
 	github.com/go-resty/resty/v2 v2.7.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/mock v1.6.0 // indirect
@@ -112,12 +118,17 @@ require (
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
 	github.com/tinylib/msgp v1.1.6 // indirect
+	github.com/vmihailenco/go-tinylfu v0.2.2 // indirect
+	github.com/vmihailenco/msgpack/v5 v5.3.4 // indirect
+	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.4 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.4 // indirect
-	go.opentelemetry.io/otel/trace v1.9.0 // indirect
+	go.opentelemetry.io/otel/metric v0.32.1 // indirect
+	go.opentelemetry.io/otel/trace v1.10.0 // indirect
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa // indirect
+	golang.org/x/exp v0.0.0-20210916165020-5cb4fee858ee // indirect
 	golang.org/x/net v0.0.0-20220809184613-07c6da5e1ced // indirect
 	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4 // indirect
 	golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10 // indirect
