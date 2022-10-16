@@ -1,7 +1,7 @@
 package encoder
 
 import (
-	"github.com/aesoper101/kratos-utils/middleware/requestid"
+	"github.com/aesoper101/kratos-utils/pkg/middleware/requestid"
 	"github.com/go-kratos/kratos/v2/errors"
 	"github.com/go-kratos/kratos/v2/transport/http"
 	stbhttp "net/http"
@@ -83,7 +83,7 @@ func ApiEncodeResponse() http.EncodeResponseFunc {
 	}
 }
 
-func ApiEncodeErrorEncoder() http.EncodeErrorFunc {
+func ApiErrorEncoder() http.EncodeErrorFunc {
 	return func(w http.ResponseWriter, r *http.Request, err error) {
 		se := errors.FromError(err)
 

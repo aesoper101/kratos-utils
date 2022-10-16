@@ -1,4 +1,4 @@
-package pkg
+package network
 
 import (
 	"github.com/aesoper101/kratos-utils/protobuf/types/confpb"
