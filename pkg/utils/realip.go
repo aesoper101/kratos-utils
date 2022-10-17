@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/aesoper101/kratos-utils/internal/constants"
+	"github.com/aesoper101/kratos-utils/constants"
 	"net"
 	"net/http"
 	"strings"
