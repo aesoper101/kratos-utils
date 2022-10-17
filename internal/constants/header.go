@@ -37,6 +37,7 @@ const (
 	HeaderXForwardedProto     = "X-Forwarded-Proto"
 	HeaderXForwardedProtocol  = "X-Forwarded-Protocol"
 	HeaderXForwardedSsl       = "X-Forwarded-Ssl"
+	HeaderTrueClientIP        = "True-Client-IP"
 	HeaderXUrlScheme          = "X-Url-Scheme"
 	HeaderXHTTPMethodOverride = "X-HTTP-Method-Override"
 	HeaderXRealIP             = "X-Real-Ip"
