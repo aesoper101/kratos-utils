@@ -1,7 +1,8 @@
-package ratelimit
+package redisrate
 
 import (
 	"context"
+	"github.com/aesoper101/kratos-utils/internal/constants"
 	"github.com/go-kratos/kratos/v2/errors"
 	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/go-kratos/kratos/v2/transport"
@@ -12,7 +13,7 @@ import (
 
 var ErrRateLimited = errors.Forbidden("ErrRateLimited", "")
 
-func Server(limiter redis_rate.Limiter, keyFunc KeyFunc, limitFunc LimitFunc) middleware.Middleware {
+func RedisServer(limiter redis_rate.Limiter, keyFunc KeyFunc, limitFunc LimitFunc) middleware.Middleware {
 	return func(handler middleware.Handler) middleware.Handler {
 		return func(ctx context.Context, req interface{}) (interface{}, error) {
 			if tr, ok := transport.FromServerContext(ctx); ok {
@@ -22,13 +23,13 @@ func Server(limiter redis_rate.Limiter, keyFunc KeyFunc, limitFunc LimitFunc) mi
 				}
 
 				h := tr.ReplyHeader()
-				h.Set("RateLimit-Remaining", strconv.Itoa(res.Remaining))
+				h.Set(constants.HeaderRateLimitRemaining, strconv.Itoa(res.Remaining))
 
 				if res.Allowed == 0 {
 					// We are rate limited.
 
 					seconds := int(res.RetryAfter / time.Second)
-					h.Set("RateLimit-RetryAfter", strconv.Itoa(seconds))
+					h.Set(constants.HeaderRateLimitRetryAfter, strconv.Itoa(seconds))
 
 					// Stop processing and return the error.
 					return nil, ErrRateLimited

@@ -1,7 +1,7 @@
 package encoder
 
 import (
-	"github.com/aesoper101/kratos-utils/pkg/middleware/requestid"
+	"github.com/aesoper101/kratos-utils/internal/constants"
 	"github.com/go-kratos/kratos/v2/errors"
 	"github.com/go-kratos/kratos/v2/transport/http"
 	stbhttp "net/http"
@@ -63,18 +63,18 @@ func ApiEncodeResponse() http.EncodeResponseFunc {
 			reply.Data = v
 		}
 
-		requestId := w.Header().Get(requestid.HeaderRequestId)
+		requestId := w.Header().Get(constants.HeaderXRequestID)
 		if len(requestId) > 0 {
 			reply.RequestId = requestId
 		}
 
-		codec, _ := http.CodecForRequest(r, "Accept")
+		codec, _ := http.CodecForRequest(r, constants.HeaderAccept)
 		data, err := codec.Marshal(reply)
 		if err != nil {
 			return err
 		}
 
-		w.Header().Set("Content-Type", contentType(codec.Name()))
+		w.Header().Set(constants.HeaderContentType, contentType(codec.Name()))
 		_, err = w.Write(data)
 		if err != nil {
 			return err
@@ -98,18 +98,18 @@ func ApiErrorEncoder() http.EncodeErrorFunc {
 			reply.Metadata = m
 		}
 
-		requestId := w.Header().Get(requestid.HeaderRequestId)
+		requestId := w.Header().Get(constants.HeaderXRequestID)
 		if len(requestId) > 0 {
 			reply.RequestId = requestId
 		}
 
-		codec, _ := http.CodecForRequest(r, "Accept")
+		codec, _ := http.CodecForRequest(r, constants.HeaderAccept)
 		body, err := codec.Marshal(reply)
 		if err != nil {
 			w.WriteHeader(stbhttp.StatusInternalServerError)
 			return
 		}
-		w.Header().Set("Content-Type", contentType(codec.Name()))
+		w.Header().Set(constants.HeaderContentType, contentType(codec.Name()))
 		w.WriteHeader(int(se.Code))
 		_, _ = w.Write(body)
 	}

@@ -2,15 +2,21 @@ package requestid
 
 import (
 	"context"
+	"github.com/aesoper101/kratos-utils/internal/constants"
 	"github.com/go-kratos/kratos/v2/metadata"
 	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/go-kratos/kratos/v2/transport"
-	uuid "github.com/satori/go.uuid"
 )
 
-const HeaderRequestId = "X-Request-Id"
+func Server(opts ...Option) middleware.Middleware {
+	o := &options{
+		generator: DefaultGenerator,
+	}
 
-func Server() middleware.Middleware {
+	for _, opt := range opts {
+		opt(o)
+	}
+
 	return func(handler middleware.Handler) middleware.Handler {
 		return func(ctx context.Context, req interface{}) (reply interface{}, err error) {
 			if tr, ok := transport.FromServerContext(ctx); ok {
@@ -18,18 +24,18 @@ func Server() middleware.Middleware {
 				requestHeader := tr.RequestHeader()
 
 				if md, ok := metadata.FromServerContext(ctx); ok {
-					requestID := md.Get(HeaderRequestId)
+					requestID := md.Get(constants.HeaderXRequestID)
 					if len(requestID) == 0 {
-						if requestHeader.Get(HeaderRequestId) != "" {
-							requestID = requestHeader.Get(HeaderRequestId)
+						if requestHeader.Get(constants.HeaderXRequestID) != "" {
+							requestID = requestHeader.Get(constants.HeaderXRequestID)
 						} else {
-							requestID = uuid.NewV4().String()
+							requestID = o.generator(ctx)
 						}
 					}
 
-					md.Set(HeaderRequestId, requestID)
+					md.Set(constants.HeaderXRequestID, requestID)
 					ctx = metadata.NewServerContext(ctx, md)
-					responseHeader.Set(HeaderRequestId, requestID)
+					responseHeader.Set(constants.HeaderXRequestID, requestID)
 				}
 			}
 
