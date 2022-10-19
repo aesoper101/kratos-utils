@@ -30,6 +30,7 @@ func Server(opts ...Option) middleware.Middleware {
 							requestID = requestHeader.Get(constants.HeaderXRequestID)
 						} else {
 							requestID = o.generator(ctx)
+							requestHeader.Set(constants.HeaderXRequestID, requestID)
 						}
 					}
 
