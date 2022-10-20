@@ -51,18 +51,18 @@ func Server(opts ...Option) middleware.Middleware {
 					if config.hstsPreloadEnabled {
 						subdomains = fmt.Sprintf("%s; preload", subdomains)
 					}
-					respHeader().Set(constants.HeaderStrictTransportSecurity, fmt.Sprintf("max-age=%d%s", config.hstsMaxAge, subdomains))
+					respHeader.Set(constants.HeaderStrictTransportSecurity, fmt.Sprintf("max-age=%d%s", config.hstsMaxAge, subdomains))
 				}
 
 				if config.contentSecurityPolicy != "" {
 					if config.cspReportOnly {
-						respHeader().Set(constants.HeaderContentSecurityPolicyReportOnly, config.contentSecurityPolicy)
+						respHeader.Set(constants.HeaderContentSecurityPolicyReportOnly, config.contentSecurityPolicy)
 					} else {
-						respHeader().Set(constants.HeaderContentSecurityPolicy, config.contentSecurityPolicy)
+						respHeader.Set(constants.HeaderContentSecurityPolicy, config.contentSecurityPolicy)
 					}
 				}
 				if config.referrerPolicy != "" {
-					respHeader().Set(constants.HeaderReferrerPolicy, config.referrerPolicy)
+					respHeader.Set(constants.HeaderReferrerPolicy, config.referrerPolicy)
 				}
 			}
 
