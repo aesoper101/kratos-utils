@@ -1,6 +1,6 @@
 package bootstrap
 
-func LoadConfig[T any](cfg Config) (T, func(), error) {
+func LoadConfig[T any](cfg ConfigFlags) (T, func(), error) {
 	c := NewConfigProvider(cfg)
 	var bc T
 	if err := c.Load(); err != nil {

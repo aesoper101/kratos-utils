@@ -13,8 +13,8 @@
 *.out
 *.log
 
-internal/log/logrusx/logs/
-
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
+*.local.yaml
+*.local.yml

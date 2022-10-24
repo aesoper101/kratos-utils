@@ -6,6 +6,7 @@ require (
 	entgo.io/ent v0.11.2
 	github.com/Shopify/sarama v1.36.0
 	github.com/aesoper101/go-utils v0.0.0-20220803075833-0a6959df6214
+	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d
 	github.com/getsentry/sentry-go v0.14.0
 	github.com/go-kratos/kratos/contrib/config/consul/v2 v2.0.0-20220826025402-b354f185c044
 	github.com/go-kratos/kratos/contrib/config/etcd/v2 v2.0.0-20220826025402-b354f185c044
@@ -36,7 +37,6 @@ require (
 	github.com/rifflock/lfshook v0.0.0-20180920164130-b9218ef580f5
 	github.com/satori/go.uuid v1.2.0
 	github.com/sirupsen/logrus v1.9.0
-	github.com/spf13/cobra v1.5.0
 	github.com/spf13/pflag v1.0.5
 	github.com/tracer0tong/kafkalogrus v0.0.0-20180816014403-290bb4d4d549
 	go.etcd.io/etcd/client/v3 v3.5.4
@@ -83,9 +83,7 @@ require (
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/uuid v1.3.0 // indirect
-	github.com/gorilla/csrf v1.7.1 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
-	github.com/gorilla/securecookie v1.1.1 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.5.0 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
@@ -98,7 +96,6 @@ require (
 	github.com/hashicorp/serf v0.9.7 // indirect
 	github.com/iancoleman/strcase v0.2.0 // indirect
 	github.com/imdario/mergo v0.3.12 // indirect
-	github.com/inconshreveable/mousetrap v1.0.1 // indirect
 	github.com/jcmturner/aescts/v2 v2.0.0 // indirect
 	github.com/jcmturner/dnsutils/v2 v2.0.0 // indirect
 	github.com/jcmturner/gofork v1.7.6 // indirect

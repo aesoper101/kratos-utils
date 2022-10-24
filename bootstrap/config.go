@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"fmt"
+	"github.com/aesoper101/go-utils/filex"
 	"github.com/aesoper101/go-utils/str"
 	consulKratos "github.com/go-kratos/kratos/contrib/config/consul/v2"
 	etcdKratos "github.com/go-kratos/kratos/contrib/config/etcd/v2"
@@ -17,12 +18,13 @@ import (
 	GRPC "google.golang.org/grpc"
 	"net/url"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
 )
 
-type Config struct {
+type ConfigFlags struct {
 	ConfigPath  string
 	ConfigType  string
 	ConfigHost  []string
@@ -42,7 +44,7 @@ func getConfigKey(configKey string, useBackslash bool) string {
 }
 
 // NewRemoteConfigSource 创建一个远程配置源
-func NewRemoteConfigSource(cfg *Config) config.Source {
+func NewRemoteConfigSource(cfg *ConfigFlags) config.Source {
 	switch cfg.ConfigType {
 	case ConfigNacos:
 		return NewNacosConfigSource(cfg)
@@ -55,7 +57,7 @@ func NewRemoteConfigSource(cfg *Config) config.Source {
 }
 
 // NewNacosConfigSource 创建一个远程配置源 - Nacos
-func NewNacosConfigSource(cfg *Config) config.Source {
+func NewNacosConfigSource(cfg *ConfigFlags) config.Source {
 	var sc []nacosConstant.ServerConfig
 
 	for _, configHost := range cfg.ConfigHost {
@@ -97,7 +99,7 @@ func NewNacosConfigSource(cfg *Config) config.Source {
 }
 
 // NewEtcdConfigSource 创建一个远程配置源 - Etcd
-func NewEtcdConfigSource(cfg *Config) config.Source {
+func NewEtcdConfigSource(cfg *ConfigFlags) config.Source {
 	if len(cfg.ConfigHost) == 0 {
 		panic("etcd hosts must be set.")
 	}
@@ -120,7 +122,7 @@ func NewEtcdConfigSource(cfg *Config) config.Source {
 }
 
 // NewConsulConfigSource 创建一个远程配置源 - Consul
-func NewConsulConfigSource(cfg *Config) config.Source {
+func NewConsulConfigSource(cfg *ConfigFlags) config.Source {
 	if len(cfg.ConfigHost) == 0 {
 		panic("Consul hosts must be set.")
 	}
@@ -156,7 +158,7 @@ func NewFileConfigSource(filePath string) config.Source {
 }
 
 // NewConfigProvider 创建一个配置
-func NewConfigProvider(cfg Config) config.Config {
+func NewConfigProvider(cfg ConfigFlags) config.Config {
 	envSourcePrefix := "KRATOS_"
 	getPrefix := os.Getenv("ENV_SOURCE_PREFIX")
 	if getPrefix != "" {
@@ -164,7 +166,12 @@ func NewConfigProvider(cfg Config) config.Config {
 	}
 	options := []config.Source{
 		env.NewSource(envSourcePrefix),
-		NewFileConfigSource(cfg.ConfigPath),
+	}
+
+	if path, err := filepath.Abs(cfg.ConfigPath); err == nil {
+		if filex.IsExists(path) {
+			options = append(options, NewFileConfigSource(cfg.ConfigPath))
+		}
 	}
 
 	configType := strings.ToLower(strings.TrimSpace(cfg.ConfigType))
