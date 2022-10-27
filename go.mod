@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	entgo.io/ent v0.11.2
+	github.com/BurntSushi/toml v1.2.0
 	github.com/Shopify/sarama v1.36.0
 	github.com/aesoper101/go-utils v0.0.0-20220803075833-0a6959df6214
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d
@@ -32,6 +33,7 @@ require (
 	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
 	github.com/lestrrat-go/strftime v1.0.6
 	github.com/nacos-group/nacos-sdk-go v1.1.2
+	github.com/nicksnyder/go-i18n/v2 v2.2.0
 	github.com/polarismesh/polaris-go v1.1.0
 	github.com/prometheus/client_golang v1.12.2
 	github.com/rifflock/lfshook v0.0.0-20180920164130-b9218ef580f5
@@ -44,6 +46,7 @@ require (
 	go.opentelemetry.io/otel/exporters/jaeger v1.9.0
 	go.opentelemetry.io/otel/sdk v1.9.0
 	go.uber.org/zap v1.23.0
+	golang.org/x/text v0.3.7
 	google.golang.org/grpc v1.46.2
 	google.golang.org/protobuf v1.28.1
 )
@@ -113,7 +116,6 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/natefinch/lumberjack v2.0.0+incompatible // indirect
-	github.com/nicksnyder/go-i18n/v2 v2.2.0 // indirect
 	github.com/opensergo/opensergo-go v0.0.0-20220331070310-e5b01fee4d1c // indirect
 	github.com/philhofer/fwd v1.1.1 // indirect
 	github.com/pierrec/lz4 v2.6.0+incompatible // indirect
@@ -136,7 +138,6 @@ require (
 	golang.org/x/net v0.0.0-20221002022538-bcab6841153b // indirect
 	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4 // indirect
 	golang.org/x/sys v0.0.0-20220928140112-f11e5e49a4ec // indirect
-	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20220519153652-3a47de7e79bd // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
