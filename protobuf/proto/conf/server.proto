@@ -21,6 +21,7 @@ message GRPC {
   string addr = 2;
   google.protobuf.Duration timeout = 3;
   TLSConfig tls = 4;
+  string auth_key = 5;
 }
 
 message MetricsSettings {
