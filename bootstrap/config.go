@@ -170,7 +170,9 @@ func NewConfigProvider(cfg ConfigFlags) config.Config {
 
 	if path, err := filepath.Abs(cfg.ConfigPath); err == nil {
 		if filex.IsExists(path) {
-			options = append(options, NewFileConfigSource(cfg.ConfigPath))
+			options = append(options,
+				NewFileConfigSource(cfg.ConfigPath),
+			)
 		}
 	}
 

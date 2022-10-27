@@ -11,14 +11,14 @@ import (
 	semConv "go.opentelemetry.io/otel/semconv/v1.12.0"
 )
 
-func NewTracerProvider(cfg *confpb.Tracer, serviceInfo *ServiceInfo) error {
+func NewTracerProvider(cfg *confpb.Tracer, serviceInfo *ServiceInfo) (*traceSdk.TracerProvider, error) {
 	if cfg == nil {
-		return errors.New("tracer config can not be nil")
+		return nil, errors.New("tracer config can not be nil")
 	}
 
 	exp, err := jaeger.New(jaeger.WithCollectorEndpoint(jaeger.WithEndpoint(cfg.Endpoint)))
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	tp := traceSdk.NewTracerProvider(
@@ -34,5 +34,5 @@ func NewTracerProvider(cfg *confpb.Tracer, serviceInfo *ServiceInfo) error {
 
 	otel.SetTracerProvider(tp)
 
-	return nil
+	return tp, nil
 }
