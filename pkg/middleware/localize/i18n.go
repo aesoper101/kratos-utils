@@ -2,9 +2,11 @@ package localize
 
 import (
 	"embed"
+	"encoding/json"
 	"github.com/BurntSushi/toml"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
+	"gopkg.in/yaml.v3"
 	"path/filepath"
 	"text/template"
 )
@@ -28,7 +30,7 @@ type (
 
 func NewBundleFromEmbedFs(fs embed.FS, pattern string) (*I18nBundle, error) {
 	bundle := i18n.NewBundle(language.Chinese)
-	bundle.RegisterUnmarshalFunc("toml", toml.Unmarshal)
+	setDefaultUnmarshalFunc(bundle)
 
 	matches, err := filepath.Glob(pattern)
 	if err != nil {
@@ -47,7 +49,7 @@ func NewBundleFromEmbedFs(fs embed.FS, pattern string) (*I18nBundle, error) {
 
 func NewBundleFromFile(pattern string) (*I18nBundle, error) {
 	bundle := i18n.NewBundle(language.Chinese)
-	bundle.RegisterUnmarshalFunc("toml", toml.Unmarshal)
+	setDefaultUnmarshalFunc(bundle)
 
 	matches, err := filepath.Glob(pattern)
 	if err != nil {
@@ -62,6 +64,16 @@ func NewBundleFromFile(pattern string) (*I18nBundle, error) {
 	}
 
 	return &I18nBundle{Bundle: bundle}, nil
+}
+
+func (b *I18nBundle) RegisterUnmarshalFunc(format string, unmarshalFunc i18n.UnmarshalFunc) {
+	b.Bundle.RegisterUnmarshalFunc(format, unmarshalFunc)
+}
+
+func setDefaultUnmarshalFunc(bundle *i18n.Bundle) {
+	bundle.RegisterUnmarshalFunc("toml", toml.Unmarshal)
+	bundle.RegisterUnmarshalFunc("yaml", yaml.Unmarshal)
+	bundle.RegisterUnmarshalFunc("json", json.Unmarshal)
 }
 
 func NewLocalizer(bundle *I18nBundle, langs ...string) *Localizer {
