@@ -28,6 +28,7 @@ require (
 	github.com/go-redis/redis/v9 v9.0.0-rc.1
 	github.com/go-redis/redis_rate/v9 v9.1.2
 	github.com/go-zookeeper/zk v1.0.3
+	github.com/google/wire v0.5.0
 	github.com/hashicorp/consul/api v1.14.0
 	github.com/hetiansu5/urlquery v1.2.7
 	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
@@ -49,6 +50,7 @@ require (
 	golang.org/x/text v0.3.7
 	google.golang.org/grpc v1.46.2
 	google.golang.org/protobuf v1.28.1
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
@@ -142,5 +144,4 @@ require (
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
