@@ -18,3 +18,5 @@
 
 *.local.yaml
 *.local.yml
+
+third_party
