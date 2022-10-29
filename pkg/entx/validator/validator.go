@@ -14,9 +14,9 @@ func PhoneValidator(phone string) error {
 	return nil
 }
 
-func UrlValidator(website string) error {
-	if str.IsNotEmpty(website) && !govalidator.IsURL(website) {
-		return errors.New("invalid website address")
+func UrlValidator(url string) error {
+	if str.IsNotEmpty(url) && !govalidator.IsURL(url) {
+		return errors.New("invalid url address")
 	}
 	return nil
 }
