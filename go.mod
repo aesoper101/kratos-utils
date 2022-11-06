@@ -7,6 +7,7 @@ require (
 	github.com/BurntSushi/toml v1.2.0
 	github.com/Shopify/sarama v1.36.0
 	github.com/aesoper101/go-utils v0.0.0-20221030041850-fa996fed123d
+	github.com/aesoper101/protoc-gen-govalidate v1.0.0
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d
 	github.com/getsentry/sentry-go v0.14.0
 	github.com/go-kratos/kratos/contrib/config/consul/v2 v2.0.0-20220826025402-b354f185c044
@@ -24,6 +25,9 @@ require (
 	github.com/go-kratos/kratos/contrib/registry/zookeeper/v2 v2.0.0-20220901152127-39536d32795f
 	github.com/go-kratos/kratos/v2 v2.5.1
 	github.com/go-kratos/swagger-api v1.0.1
+	github.com/go-playground/locales v0.14.0
+	github.com/go-playground/universal-translator v0.18.0
+	github.com/go-playground/validator/v10 v10.11.1
 	github.com/go-redis/redis/extra/redisotel/v9 v9.0.0-rc.1
 	github.com/go-redis/redis/v9 v9.0.0-rc.1
 	github.com/go-redis/redis_rate/v9 v9.1.2
@@ -41,6 +45,7 @@ require (
 	github.com/satori/go.uuid v1.2.0
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/pflag v1.0.5
+	github.com/tdewolff/parse/v2 v2.6.4
 	github.com/tracer0tong/kafkalogrus v0.0.0-20180816014403-290bb4d4d549
 	go.etcd.io/etcd/client/v3 v3.5.4
 	go.opentelemetry.io/otel v1.10.0
@@ -54,7 +59,6 @@ require (
 )
 
 require (
-	github.com/aesoper101/protoc-gen-govalidate v1.0.0 // indirect
 	github.com/aliyun/alibaba-cloud-sdk-go v1.61.18 // indirect
 	github.com/aliyun/aliyun-log-go-sdk v0.1.37 // indirect
 	github.com/armon/go-metrics v0.3.10 // indirect
@@ -80,8 +84,6 @@ require (
 	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-playground/form/v4 v4.2.0 // indirect
-	github.com/go-playground/locales v0.14.0 // indirect
-	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-redis/redis/extra/rediscmd/v9 v9.0.0-rc.1 // indirect
 	github.com/go-redis/redis/v8 v8.11.4 // indirect
 	github.com/go-resty/resty/v2 v2.7.0 // indirect
@@ -113,6 +115,7 @@ require (
 	github.com/jonboulle/clockwork v0.3.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/compress v1.15.11 // indirect
+	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.16 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
