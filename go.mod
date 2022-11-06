@@ -6,7 +6,7 @@ require (
 	entgo.io/ent v0.11.2
 	github.com/BurntSushi/toml v1.2.0
 	github.com/Shopify/sarama v1.36.0
-	github.com/aesoper101/go-utils v0.0.0-20221030041850-fa996fed123d
+	github.com/aesoper101/go-utils v1.0.0
 	github.com/aesoper101/protoc-gen-govalidate v1.0.0
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d
 	github.com/getsentry/sentry-go v0.14.0

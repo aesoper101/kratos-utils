@@ -21,11 +21,11 @@ type (
 	Option func(*options)
 
 	options struct {
-		registerDefaultTranslations func(trans ut.Translator, validate *govalidator.Validate)
+		registerDefaultTranslations func(validate *govalidator.Validate, trans ut.Translator)
 	}
 )
 
-func WithRegisterDefaultTranslations(fn func(trans ut.Translator, validate *govalidator.Validate)) Option {
+func WithRegisterDefaultTranslations(fn func(validate *govalidator.Validate, trans ut.Translator)) Option {
 	return func(o *options) {
 		o.registerDefaultTranslations = fn
 	}
@@ -47,7 +47,7 @@ func Validator(opts ...Option) middleware.Middleware {
 		return func(ctx context.Context, req interface{}) (reply interface{}, err error) {
 			trans := translator.FromTranslatorContext(ctx)
 			unTrans := trans.RawTranslator()
-			o.registerDefaultTranslations(unTrans, protoValidator.Validator())
+			o.registerDefaultTranslations(protoValidator.Validator(), unTrans)
 
 			if v, ok := req.(validator); ok {
 				if err := v.Validate(); err != nil {
@@ -70,7 +70,7 @@ func Validator(opts ...Option) middleware.Middleware {
 	}
 }
 
-func registerDefaultTranslations(trans ut.Translator, validate *govalidator.Validate) {
+func registerDefaultTranslations(validate *govalidator.Validate, trans ut.Translator) {
 	switch trans.Locale() {
 	case "en":
 		_ = enTranslations.RegisterDefaultTranslations(validate, trans)
